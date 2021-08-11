@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ToDo from './ToDo';
 import Header from './Header';
 import Inputs from './Inputs';
+import './list.css'
 
 export default function List() {
 
@@ -38,8 +39,8 @@ export default function List() {
     return (
         <>
             {<Header list={list}/>}
-            <Inputs handleChange={handleChange} handleSubmit={handleSubmit} item={item}/>
             <ToDo handleRemove={handleRemove} list={list}/>
+            <Inputs handleChange={handleChange} handleSubmit={handleSubmit} item={item}/>
         </>
     )
 }

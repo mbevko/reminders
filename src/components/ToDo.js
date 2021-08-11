@@ -4,7 +4,12 @@ export default function ToDo({ list, handleRemove }){
     return(
         <ul>
             {list.map((item, index) => {
-                return <li key={index}>{item.value}<span name={item.value} onClick={handleRemove}>X</span></li>
+                return (
+                    <div className="list_item">
+                        <button className="checkbox" name={item.value} onClick={handleRemove}></button>
+                        <li key={index}>{item.value}</li>
+                    </div>
+                )
             })}
         </ul>
     )

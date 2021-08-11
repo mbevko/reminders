@@ -9,6 +9,14 @@ export default function Home () {
     const [newList,
         setNewList] = useState([])
 
+        //NEW LIST VIEW
+
+    const [createList, setCreateList] = useState(true)
+
+    const handleCreateList = () => {
+        setCreateList(true)
+    }
+
     const handleTitleColor = ({target}) => {
         
         const {name, value} = target;
@@ -26,21 +34,29 @@ export default function Home () {
             ...prevList,
             titleColor
         ])
-        //setCreateList(true)
+        setCreateList(false)
     }
     
 
     return(
-        <div>
-            <ListForm handleTitleColor={handleTitleColor} submitSettings={submitSettings}/>
-            {newList.map((todoapp) => {
-                return( 
-                    <div>
-                        <h1 style={{color: todoapp.color}}>{todoapp.title}</h1>
-                        {todoapp.app}
-                    </div>
-                    )
-            })}
+        <div className="home_page">
+            {createList ? 
+            <div>
+                <ListForm handleTitleColor={handleTitleColor} submitSettings={submitSettings}/>
+            </div>
+            :
+            <div>
+                {newList.map((todoapp) => {
+                    return( 
+                        <div>
+                            <h1 style={{color: todoapp.color}}>{todoapp.title}</h1>
+                            {todoapp.app}
+                        </div>
+                        )
+                })}
+                <button onClick={handleCreateList}>Add List</button>
+            </div>
+            }
         </div>
     )
 }
